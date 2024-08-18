@@ -11,6 +11,3 @@ This project is a fully responsive e-commerce website built individually using B
 ### Cart Page: Displays the products added to the cart, with options to edit or delete them.
 
 Trello Link : https://trello.com/b/KUkgdz0E/mini-e-commerce-wesite
-
-my Trello link :
-https://trello.com/b/KUkgdz0E/mini-e-commerce-wesite
