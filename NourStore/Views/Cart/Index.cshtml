@@ -1,0 +1,45 @@
+﻿@model List<NourStore.Controllers.CartItem>
+
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1 class="my-4 text-center">Your Cart</h1>
+
+    @if (Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ProductName</td>
+                        <td>@item.Price JD</td>
+                        <td>@item.Quantity</td>
+                        <td>@(item.Price * item.Quantity) JD</td>
+                        <td>
+                            <a href="@Url.Action("RemoveFromCart", "Cart", new { id = item.ProductID })" class="btn btn-danger">Remove</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Your cart is empty.</p>
+    }
+</div>
+
+

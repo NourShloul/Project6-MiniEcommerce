@@ -1,0 +1,56 @@
+﻿@model NourStore.Models.UserProfile
+
+@{
+    ViewBag.Title = "User Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Profile</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@using (Html.BeginForm("UserProfile", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserName)
+        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+    </div>
+
+    <hr />
+
+    <h3>Change Password</h3>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CurrentPassword)
+        @Html.PasswordFor(m => m.CurrentPassword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CurrentPassword, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.NewPassword)
+        @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.NewPassword, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ConfirmNewPassword)
+        @Html.PasswordFor(m => m.ConfirmNewPassword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ConfirmNewPassword, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Profile</button>
+}
